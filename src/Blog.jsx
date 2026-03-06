@@ -3,56 +3,56 @@ import { useState } from "react";
 const blogs = [
   {
     id: 1,
-    title: "Digital Marketing Strategy",
-    desc: "Learn the fundamentals of building a powerful digital marketing strategy for modern businesses.",
+    title: "Future of Digital Transformation",
+    desc: "How companies are adapting modern technologies to scale faster.",
     content:
-      "Full blog content here. You can write detailed content about marketing strategies, SEO techniques, content planning and more.",
+      "Digital transformation is reshaping industries worldwide. Businesses are integrating AI, automation, and cloud technologies to stay competitive. Companies that invest in innovation are seeing faster growth and improved efficiency.",
     image:
-      "https://images.unsplash.com/photo-1492724441997-5dc865305da7"
+      "https://images.unsplash.com/photo-1551281044-8b1c0f1a3f6a"
   },
   {
     id: 2,
-    title: "Web Development Trends 2026",
-    desc: "Explore the latest technologies shaping the future of web development.",
+    title: "Modern Web Development Trends",
+    desc: "Key technologies developers should focus on in 2026.",
     content:
-      "Full blog content explaining AI integration, server components, edge computing, and modern frameworks.",
+      "Modern web development now focuses on performance, scalability, and user experience. Technologies like React, Next.js, and server-side rendering are becoming industry standards.",
     image:
       "https://images.unsplash.com/photo-1461749280684-dccba630e2f6"
   },
   {
     id: 3,
-    title: "UI/UX Design Principles",
-    desc: "How good design improves customer experience and business success.",
+    title: "Importance of UI/UX Design",
+    desc: "Why user-centered design is critical for digital products.",
     content:
-      "Detailed explanation about usability, accessibility, modern design systems and user psychology.",
+      "Great design improves usability and customer satisfaction. Businesses investing in strong UI/UX design see higher engagement and better conversions.",
     image:
       "https://images.unsplash.com/photo-1559028012-481c04fa702d"
   }
 ];
 
 export default function BlogPage() {
-  const [selectedBlog, setSelectedBlog] = useState(null);
+  const [activeBlog, setActiveBlog] = useState(null);
 
-  if (selectedBlog) {
+  if (activeBlog) {
     return (
-      <div className="max-w-4xl mx-auto py-16 px-6">
+      <div className="max-w-4xl mx-auto px-6 py-16">
         <button
-          onClick={() => setSelectedBlog(null)}
-          className="mb-6 text-blue-600 font-semibold"
+          onClick={() => setActiveBlog(null)}
+          className="text-blue-600 font-medium mb-6"
         >
-          ← Back
+          ← Back to Blogs
         </button>
 
         <img
-          src={selectedBlog.image}
-          alt=""
+          src={activeBlog.image}
           className="rounded-xl mb-6 w-full"
+          alt=""
         />
 
-        <h1 className="text-3xl font-bold mb-4">{selectedBlog.title}</h1>
+        <h1 className="text-3xl font-bold mb-4">{activeBlog.title}</h1>
 
-        <p className="text-gray-700 leading-relaxed">
-          {selectedBlog.content}
+        <p className="text-gray-700 leading-relaxed text-lg">
+          {activeBlog.content}
         </p>
       </div>
     );
@@ -61,37 +61,42 @@ export default function BlogPage() {
   return (
     <div>
       {/* Hero Section */}
-      <div className="bg-gray-900 text-white py-20 text-center">
-        <h1 className="text-4xl font-bold mb-4">Our Blog</h1>
-        <p className="text-gray-300">
-          Insights, tips and knowledge from our experts
+      <section className="bg-gray-900 text-white py-24 text-center">
+        <h1 className="text-5xl font-bold mb-4">Insights & Articles</h1>
+        <p className="text-gray-300 text-lg max-w-xl mx-auto">
+          Discover industry insights, expert tips, and the latest trends in
+          technology and digital innovation.
         </p>
-      </div>
+      </section>
 
-      {/* Blog Cards */}
-      <div className="max-w-7xl mx-auto py-16 px-6 grid md:grid-cols-3 gap-8">
+      {/* Blog Grid */}
+      <section className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-10">
         {blogs.map((blog) => (
           <div
             key={blog.id}
-            className="bg-white shadow-lg rounded-xl overflow-hidden"
+            className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300"
           >
-            <img src={blog.image} alt="" className="h-48 w-full object-cover" />
+            <img
+              src={blog.image}
+              className="h-48 w-full object-cover rounded-t-xl"
+              alt=""
+            />
 
             <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
+              <h3 className="text-xl font-semibold mb-3">{blog.title}</h3>
 
-              <p className="text-gray-600 mb-4">{blog.desc}</p>
+              <p className="text-gray-600 mb-5">{blog.desc}</p>
 
               <button
-                onClick={() => setSelectedBlog(blog)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+                onClick={() => setActiveBlog(blog)}
+                className="text-blue-600 font-semibold hover:underline"
               >
-                Read More
+                Read More →
               </button>
             </div>
           </div>
         ))}
-      </div>
+      </section>
     </div>
   );
-      }
+}
